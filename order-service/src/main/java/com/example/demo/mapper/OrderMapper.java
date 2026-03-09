@@ -15,7 +15,7 @@ import java.util.*;
 @Component
 @RequiredArgsConstructor
 public class OrderMapper {
-    private OrderItemMapper orderItemMapper;
+    private final OrderItemMapper orderItemMapper;
 
     public Order toOrder(CreateOrderRequestDTO requestDto) {
         Order order = new Order();
