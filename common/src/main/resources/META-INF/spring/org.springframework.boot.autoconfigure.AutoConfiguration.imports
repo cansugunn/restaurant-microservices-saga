@@ -1,0 +1,2 @@
+com.example.common.kafka.config.KafkaPropertiesAutoConfiguration
+com.example.common.kafka.config.KafkaConfig

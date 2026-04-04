@@ -21,14 +21,13 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<CreateOrderResponseDTO> createOrder(@RequestBody CreateOrderRequestDTO dto){
-
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(orderService.createOrder(dto));
     }
 
     @GetMapping(path="/{trackingId}")
-    public ResponseEntity<GetOrderResponseDTO> getOrder(@RequestParam UUID trackingId){
+    public ResponseEntity<GetOrderResponseDTO> getOrder(@PathVariable UUID trackingId){
         return ResponseEntity.ok(orderService.findOrderByTrackingId(trackingId));
     }
 }

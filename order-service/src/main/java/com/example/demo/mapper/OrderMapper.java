@@ -10,14 +10,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Component
 @RequiredArgsConstructor
 public class OrderMapper {
-    private OrderItemMapper orderItemMapper;
+    private final OrderItemMapper orderItemMapper;
 
     public Order toOrder(CreateOrderRequestDTO requestDto) {
         Order order = new Order();
@@ -50,8 +48,14 @@ public class OrderMapper {
         return price;
     }
 
-    public GetOrderResponseDTO toGetOrderResponseDTO(Order order){
-        return new GetOrderResponseDTO(order.getTrackingId(),order.getOrderStatus(),new ArrayList<>());
 
+    //todo failure messages should be fixed
+    public GetOrderResponseDTO toGetOrderResponseDTO(Order order) {
+        List<String> failureMessageList = Collections.EMPTY_LIST;
+        if (order.getFailureMessages() != null && !order.getFailureMessages().isBlank()) {
+            failureMessageList = Arrays.stream(order.getFailureMessages().split(",")).toList();
+        }
+
+        return new GetOrderResponseDTO(order.getTrackingId(), order.getOrderStatus(), failureMessageList);
     }
 }
