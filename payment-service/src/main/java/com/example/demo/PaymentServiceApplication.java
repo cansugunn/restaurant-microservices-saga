@@ -4,8 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = "com.example.common")
-@ComponentScan(basePackages = "com.example.demo")
+@ComponentScan(basePackages = {"com.example.demo", "com.example.common"})
 @SpringBootApplication
 public class PaymentServiceApplication {
 

@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CreateOrderRequestDTO;
-import com.example.demo.dto.CreateOrderResponseDTO;
-import com.example.demo.dto.GetOrderResponseDTO;
+import com.example.demo.dto.request.CreateOrderRequestDTO;
+import com.example.demo.dto.response.CreateOrderResponseDTO;
+import com.example.demo.dto.response.GetOrderResponseDTO;
 import com.example.demo.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Validated
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/api/v1/orders")
 public class OrderController {
     private final OrderService orderService;
 

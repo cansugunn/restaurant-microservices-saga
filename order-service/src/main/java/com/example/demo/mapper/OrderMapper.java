@@ -1,11 +1,12 @@
 package com.example.demo.mapper;
 
-import com.example.demo.dto.CreateOrderRequestDTO;
-import com.example.demo.dto.CreateOrderResponseDTO;
-import com.example.demo.dto.GetOrderResponseDTO;
+import com.example.demo.dto.request.CreateOrderRequestDTO;
+import com.example.demo.dto.response.CreateOrderResponseDTO;
+import com.example.demo.dto.response.GetOrderResponseDTO;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.OrderItem;
 import com.example.demo.entity.OrderStatus;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +18,7 @@ import java.util.*;
 public class OrderMapper {
     private final OrderItemMapper orderItemMapper;
 
-    public Order toOrder(CreateOrderRequestDTO requestDto) {
+    public Order toOrder(@Valid CreateOrderRequestDTO requestDto) {
         Order order = new Order();
 
         order.setTrackingId(UUID.randomUUID());

@@ -13,7 +13,6 @@ import java.util.UUID;
 @Setter
 @Table(name = "restaurant")
 public class Restaurant {
-
     @Id
     private UUID id;
 
@@ -26,6 +25,4 @@ public class Restaurant {
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<Product> productsList;
-
-
 }

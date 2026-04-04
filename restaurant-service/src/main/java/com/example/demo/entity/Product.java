@@ -19,7 +19,7 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "order_price")
+    @Column(name = "price")
     private BigDecimal price;
 
     @ManyToOne(cascade = CascadeType.ALL)

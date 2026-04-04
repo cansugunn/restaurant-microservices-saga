@@ -3,9 +3,9 @@ package com.example.demo.service;
 import com.example.common.kafka.EventPublisher;
 import com.example.common.kafka.config.KafkaProperties;
 import com.example.common.kafka.event.OrderCreatedEvent;
-import com.example.demo.dto.CreateOrderRequestDTO;
-import com.example.demo.dto.CreateOrderResponseDTO;
-import com.example.demo.dto.GetOrderResponseDTO;
+import com.example.demo.dto.request.CreateOrderRequestDTO;
+import com.example.demo.dto.response.CreateOrderResponseDTO;
+import com.example.demo.dto.response.GetOrderResponseDTO;
 import com.example.demo.entity.Order;
 import com.example.demo.mapper.OrderMapper;
 import com.example.demo.repository.OrderRepository;
@@ -15,8 +15,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import java.math.BigDecimal;
 import java.util.UUID;
+
 
 @Service
 @Validated
@@ -27,7 +27,7 @@ public class OrderService {
     private final EventPublisher eventPublisher;
     private final KafkaProperties kafkaProperties;
 
-    public CreateOrderResponseDTO  createOrder(@Valid CreateOrderRequestDTO requestDto){
+    public CreateOrderResponseDTO createOrder(@Valid CreateOrderRequestDTO requestDto) {
         Order order = orderMapper.toOrder(requestDto);
         orderRepository.save(order);
         //todo map to created order event
@@ -43,7 +43,7 @@ public class OrderService {
     }
 
     public GetOrderResponseDTO findOrderByTrackingId(@NotNull UUID trackingId) {
-        Order order=orderRepository.findByTrackingId(trackingId);
+        Order order = orderRepository.findByTrackingId(trackingId);
 
         return orderMapper.toGetOrderResponseDTO(order);
 

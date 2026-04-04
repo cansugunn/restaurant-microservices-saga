@@ -9,7 +9,6 @@ import static jakarta.persistence.GenerationType.UUID;
 
 @Component
 public class RestaurantMapper {
-
     public Restaurant toEntity(CreateRestaurantRequestDTO dto) {
         Restaurant restaurant = new Restaurant();
 
@@ -21,7 +20,6 @@ public class RestaurantMapper {
     }
 
     public RestaurantResponseDTO toResponse(Restaurant restaurant) {
-
         return new RestaurantResponseDTO(
                 restaurant.getId(),
                 restaurant.getName(),
@@ -29,5 +27,4 @@ public class RestaurantMapper {
                 restaurant.getCloseTime()
         );
     }
-
 }

@@ -1,18 +1,15 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.PaymentResponseDTO;
+import com.example.demo.dto.response.PaymentResponseDTO;
 import com.example.demo.dto.request.CreatePaymentRequestDTO;
 import com.example.demo.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 @RestController
-@RequestMapping("/payments")
+@RequestMapping("/api/v1/payments")
 @RequiredArgsConstructor
 public class PaymentController {
-
     private final PaymentService paymentService;
 
     @PostMapping

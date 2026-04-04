@@ -36,9 +36,5 @@ public class Payment {
     @JoinColumn(name = "account_id")
     private Account account;
 
-
-
     //todo kafka order->payments
-
-
 }

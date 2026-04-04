@@ -14,20 +14,12 @@ import java.util.UUID;
 @Getter
 @Setter
 public class Account {
-
     @Id
     private Long id;
 
     @Column(name = "customer_id")
     private UUID customerId;
 
-
     @Column(name = "balance")
     private BigDecimal balance;
-
-
-
-
-
-
 }
