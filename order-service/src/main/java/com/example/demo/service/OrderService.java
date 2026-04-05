@@ -46,7 +46,7 @@ public class OrderService {
                         Instant.now()
                 ));
 
-        log.info("Order created and event published. orderId={}, status={}", order.getId(), order.getOrderStatus());
+        log.info("OrderStatus changed to {} for orderId={}", order.getOrderStatus(), order.getId());
         return orderMapper.toCreateOrderResponseDTO(order);
     }
 
@@ -54,23 +54,35 @@ public class OrderService {
         Order order = orderRepository.findByTrackingId(trackingId);
         return orderMapper.toGetOrderResponseDTO(order);
     }
+    
+    // Payment başarılı → order'ı PAID yap
+    public void setOrderToPaid(Long orderId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found: " + orderId));
+        OrderStatus oldStatus = order.getOrderStatus();
+        order.setOrderStatus(OrderStatus.PAID);
+        orderRepository.save(order);
+        log.info("OrderStatus changed from {} to {} for orderId={}", oldStatus, order.getOrderStatus(), orderId);
+    }
 
     // Payment başarısız → order'ı CANCELLED yap
     public void cancelOrder(Long orderId, String reason) {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("Order not found: " + orderId));
+        OrderStatus oldStatus = order.getOrderStatus();
         order.setOrderStatus(OrderStatus.CANCELLED);
         order.setFailureMessages(reason);
         orderRepository.save(order);
-        log.info("Order CANCELLED. orderId={}, reason={}", orderId, reason);
+        log.info("OrderStatus changed from {} to {} for orderId={} (Reason: {})", oldStatus, order.getOrderStatus(), orderId, reason);
     }
 
     // Restaurant onayı → order'ı SUCCESS yap
     public void approveOrder(Long orderId) {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("Order not found: " + orderId));
+        OrderStatus oldStatus = order.getOrderStatus();
         order.setOrderStatus(OrderStatus.SUCCESS);
         orderRepository.save(order);
-        log.info("Order SUCCESS. orderId={}", orderId);
+        log.info("OrderStatus changed from {} to {} for orderId={}", oldStatus, order.getOrderStatus(), orderId);
     }
 }

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e6e2da",
+                        "on-tertiary-fixed": "#181e01",
+                        "on-surface-variant": "#424844",
+                        "on-secondary-fixed-variant": "#812914",
+                        "on-secondary-container": "#741f0b",
+                        "surface-container-low": "#f7f3eb",
+                        "surface-container-high": "#ece8e0",
+                        "inverse-surface": "#31302b",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#98b5a3",
+                        "tertiary": "#282f0b",
+                        "surface-dim": "#dddad2",
+                        "tertiary-fixed-dim": "#c3cb9a",
+                        "surface": "#fdf9f1",
+                        "tertiary-fixed": "#dfe7b4",
+                        "error": "#ba1a1a",
+                        "background": "#fdf9f1",
+                        "surface-bright": "#fdf9f1",
+                        "on-background": "#1c1c17",
+                        "secondary": "#a03f29",
+                        "inverse-primary": "#b0cdbb",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffdad2",
+                        "surface-tint": "#496455",
+                        "on-surface": "#1c1c17",
+                        "primary-fixed": "#ccead6",
+                        "secondary-container": "#fe876a",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e6e2da",
+                        "on-tertiary-fixed-variant": "#434a24",
+                        "primary": "#173124",
+                        "on-secondary-fixed": "#3d0700",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#062014",
+                        "inverse-on-surface": "#f4f0e8",
+                        "outline": "#727973",
+                        "on-tertiary-container": "#aab383",
+                        "on-primary-fixed-variant": "#324c3e",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#b0cdbb",
+                        "outline-variant": "#c2c8c2",
+                        "primary-container": "#2d4739",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#3e4520",
+                        "secondary-fixed-dim": "#ffb4a3",
+                        "surface-container": "#f1ede6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .font-newsreader {
+            font-family: 'Newsreader', serif;
+        }
+
+        .font-manrope {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .tonal-shift {
+            transition: background-color 0.3s ease;
+        }
+
+        .log-entry {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-surface text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
+    <!-- TopNavBar -->
+    <header class="full-width top-0 sticky z-50 bg-[#fdf9f1] dark:bg-[#1c1c17] tonal-shift">
+        <nav class="flex justify-between items-center px-8 py-6 max-w-screen-2xl mx-auto">
+            <div class="font-newsreader text-2xl font-bold tracking-tight text-[#173124] dark:text-[#fdf9f1]">
+                The Culinary Editorial
+            </div>
+            <div class="hidden md:flex items-center space-x-12">
+                <a class="font-newsreader text-lg italic capitalize text-[#424844] dark:text-[#e6e2da] hover:text-[#173124] transition-colors duration-300"
+                    href="#">Our Story</a>
+                <a class="font-newsreader text-lg italic capitalize text-[#424844] dark:text-[#e6e2da] hover:text-[#173124] transition-colors duration-300"
+                    href="#">Menu</a>
+                <a class="font-newsreader text-lg italic capitalize text-[#424844] dark:text-[#e6e2da] hover:text-[#173124] transition-colors duration-300"
+                    href="#">Reservations</a>
+                <a class="font-newsreader text-lg italic capitalize text-[#424844] dark:text-[#e6e2da] hover:text-[#173124] transition-colors duration-300"
+                    href="#">Private Dining</a>
+            </div>
+            <button
+                class="bg-primary text-on-primary px-6 py-2.5 rounded-sm font-label text-sm font-semibold tracking-widest uppercase scale-95 duration-200 ease-in-out hover:bg-primary-container transition-all">
+                Sign In
+            </button>
+        </nav>
+        <div class="h-px w-full bg-[#727973]/15"></div>
+    </header>
+    <main class="min-h-screen">
+        <!-- Unified Hero & Order Process Section -->
+        <section class="relative overflow-hidden pt-20 pb-32">
+            <div class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                <!-- Left Column: Branding & CTA -->
+                <div class="lg:col-span-5 pt-8">
+                    <span
+                        class="font-manrope text-xs font-bold tracking-[0.2em] text-secondary uppercase mb-6 block">Est.
+                        1994</span>
+                    <h1 class="font-newsreader text-6xl md:text-8xl text-primary leading-tight mb-8">
+                        The Art of <br />
+                        <span class="italic font-light">Sustenance</span>
+                    </h1>
+                    <p class="font-manrope text-lg text-on-surface-variant max-w-md mb-8 leading-relaxed">
+                        Experience a symphony of seasonal flavors curated by our master botanists. We transform simple
+                        earth-born ingredients into an editorial journey for the senses.
+                    </p>
+
+                    <!-- Order Scenario Switches -->
+                    <div class="mb-8 space-y-4">
+                        <label class="flex items-center gap-2 cursor-pointer font-manrope">
+                            <input type="radio" name="scenario" value="success" checked
+                                class="form-radio text-secondary focus:ring-secondary border-outline">
+                            <span class="text-sm font-bold text-primary">Scenario: Happy Path (Sufficient
+                                Balance)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer font-manrope">
+                            <input type="radio" name="scenario" value="fail"
+                                class="form-radio text-secondary focus:ring-secondary border-outline">
+                            <span class="text-sm text-outline">Scenario: FAILED (Insufficient Balance)</span>
+                        </label>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <button id="create-order-btn"
+                            class="group relative bg-secondary text-on-secondary px-10 py-5 rounded-sm font-manrope font-bold text-lg tracking-wide transition-all duration-300 hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1">
+                            Create Order
+                            <span
+                                class="absolute bottom-0 left-0 w-full h-1 bg-on-secondary/10 group-hover:h-full transition-all duration-300 -z-10"></span>
+                        </button>
+                        <div class="flex items-center gap-3 text-on-surface-variant font-label text-sm italic">
+                            <span class="material-symbols-outlined text-secondary">eco</span>
+                            Farm-to-table delivery within 45 minutes
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Column: Integrated Log Container Expanded -->
+                <div class="lg:col-span-7">
+                    <h2 class="font-newsreader text-4xl text-primary italic mb-6">Order Process</h2>
+                    <div class="h-1 w-12 bg-secondary mb-12"></div>
+                    <!-- Main Log Container - Expanded to full column -->
+                    <div
+                        class="bg-surface-container-lowest border-b-4 border-secondary/20 p-10 md:p-16 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 opacity-5">
+                            <span class="material-symbols-outlined text-8xl">terminal</span>
+                        </div>
+                        <div id="log-container" class="space-y-10 text-left relative z-10 min-h-[300px]">
+
+                            <div class="flex gap-8 items-start border-l-2 border-outline-variant/30 pl-8 py-2">
+                                <span
+                                    class="font-manrope text-xs uppercase tracking-widest text-outline font-bold pt-2">SYS</span>
+                                <div>
+                                    <h4
+                                        class="font-manrope font-bold text-lg text-on-surface-variant uppercase tracking-tight">
+                                        System Initialization</h4>
+                                    <p class="font-manrope text-on-surface-variant/70 text-base mt-2">Culinary engine
+                                        ready. Awaiting SAGA Order Triggers.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="mt-12 pt-8 border-t border-outline-variant/10 flex justify-between items-center">
+                            <div class="flex items-center gap-4">
+                                <span class="font-manrope text-xs text-outline uppercase tracking-widest">Connection:
+                                    Secure</span>
+                                <span
+                                    class="font-manrope text-xs text-outline/50 uppercase tracking-widest px-3 py-1 bg-surface-container rounded-full">Protocol
+                                    8.2.1</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <div id="status-indicator-1" class="w-2 h-2 rounded-full bg-secondary"></div>
+                                <div id="status-indicator-2" class="w-2 h-2 rounded-full bg-secondary/40"></div>
+                                <div id="status-indicator-3" class="w-2 h-2 rounded-full bg-secondary/20"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Spacer to maintain layout balance -->
+        <section class="h-32 bg-surface"></section>
+    </main>
+    <footer class="bg-surface-container py-12 border-t border-outline-variant/10">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <div class="font-newsreader text-xl font-bold text-primary mb-4 italic">The Culinary Editorial</div>
+            <p class="font-manrope text-xs tracking-widest text-outline uppercase">© 2024 Botanical Gastronomy
+                Collective</p>
+        </div>
+    </footer>
+
+    <script>
+        const orderBtn = document.getElementById('create-order-btn');
+        const logContainer = document.getElementById('log-container');
+
+        // Status polling interval
+        let pollInterval = null;
+
+        function addLogEntry(timeStr, title, message, colorClass = "border-secondary", textClass = "text-primary") {
+            const div = document.createElement('div');
+            div.className = `flex gap-8 items-start border-l-2 ${colorClass} pl-8 py-2 log-entry`;
+            div.innerHTML = `
+            <span class="font-manrope text-xs uppercase tracking-widest text-outline font-bold pt-2">${timeStr}</span>
+            <div>
+                <h4 class="font-manrope font-bold text-lg ${textClass} uppercase tracking-tight">${title}</h4>
+                <p class="font-manrope text-on-surface-variant/70 text-base mt-2">${message}</p>
+            </div>
+        `;
+            logContainer.prepend(div);
+        }
+
+        orderBtn.addEventListener('click', async () => {
+            // Clear previous logs
+            logContainer.innerHTML = '';
+            if (pollInterval) clearInterval(pollInterval);
+
+            const scenario = document.querySelector('input[name="scenario"]:checked').value;
+            const customerId = scenario === "success"
+                ? "a0000000-0000-0000-0000-000000000001" // Balance: 500
+                : "a0000000-0000-0000-0000-000000000002"; // Balance: 100
+
+            const payload = {
+                customerId: customerId,
+                restaurantId: "b0000000-0000-0000-0000-000000000001",
+                orderItemDTOList: [
+                    { productId: 101, quantity: 1 },
+                    { productId: 103, quantity: 2 } // Total: 50*1 + 15*2 = 80
+                ]
+            };
+
+            const timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            addLogEntry(timeNow, "ORDER CREATED", "Initiating SAGA Transaction. Order transmitted to central processing bus.");
+
+            try {
+                orderBtn.disabled = true;
+                orderBtn.innerText = "Processing...";
+
+                const response = await fetch('/api/v1/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error("Network / Server Error");
+                const data = await response.json();
+
+                const trackingId = data.orderTrackingId;
+                startPolling(trackingId);
+
+            } catch (error) {
+                addLogEntry(timeNow, "SYSTEM ERROR", "Failed to reach Order Service API.", "border-error", "text-error");
+                orderBtn.disabled = false;
+                orderBtn.innerText = "Create Order";
+            }
+        });
+
+        function startPolling(trackingId) {
+            let lastStatus = "CREATED";
+
+            pollInterval = setInterval(async () => {
+                try {
+                    const res = await fetch(`/api/v1/orders/${trackingId}`);
+                    if (!res.ok) return;
+                    const orderData = await res.json();
+
+                    const timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+                    if (orderData.orderStatus !== lastStatus) {
+                        lastStatus = orderData.orderStatus;
+
+                        if (lastStatus === "PAID") {
+                            addLogEntry(timeNow, "PAYMENT COMPLETED", "Sufficient balance verified. Triggering Restaurant Service for availability check.");
+                        } else if (lastStatus === "SUCCESS") {
+                            addLogEntry(timeNow, "RESTAURANT APPROVED", "Restaurant is currently open and accepted the order. SAGA Transaction completed successfully!", "border-[#173124]", "text-[#173124]");
+                            clearInterval(pollInterval);
+                            resetButton();
+                        } else if (lastStatus === "CANCELLED") {
+                            addLogEntry(timeNow, "PAYMENT FAILED / COMPENSATED", `Order cancelled. Reason: ${orderData.failureMessages}. SAGA Compensating Transaction triggered.`, "border-error", "text-error");
+                            clearInterval(pollInterval);
+                            resetButton();
+                        }
+                    }
+                } catch (err) {
+                    console.error("Polling error", err);
+                }
+            }, 1500); // poll every 1.5s
+        }
+
+        function resetButton() {
+            orderBtn.disabled = false;
+            orderBtn.innerText = "Create Order";
+        }
+    </script>
+</body>
+
+</html>
