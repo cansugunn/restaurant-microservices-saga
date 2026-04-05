@@ -22,8 +22,9 @@ public class OrderMapper {
         Order order = new Order();
 
         order.setTrackingId(UUID.randomUUID());
+        order.setCustomerId(requestDto.customerId());
         order.setRestaurantId(requestDto.restaurantId());
-        order.setOrderStatus(OrderStatus.PENDING);
+        order.setOrderStatus(OrderStatus.CREATED);
 
         List<OrderItem> orderItemList = requestDto.orderItemDTOList()
                 .stream()
@@ -42,9 +43,9 @@ public class OrderMapper {
     }
 
     private BigDecimal calculateTotalAmount(List<OrderItem> orderItemList) {
-        BigDecimal price = new BigDecimal(0);
+        BigDecimal price = BigDecimal.ZERO;
         for (OrderItem orderItem : orderItemList) {
-            price.add(orderItem.getTotalAmount());
+            price = price.add(orderItem.getTotalAmount());
         }
         return price;
     }

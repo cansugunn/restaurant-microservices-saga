@@ -21,12 +21,15 @@ public class Order {
     @Column(name = "tracking_id")
     private UUID trackingId;
 
+    @Column(name = "customer_id")
+    private UUID customerId;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "order_status")
     private OrderStatus orderStatus;
 
     @Column(name = "restaurant_id")
-    private Long restaurantId;
+    private UUID restaurantId;
 
     @Column(name = "price")
     private BigDecimal price;
@@ -37,3 +40,4 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItemList;
 }
+

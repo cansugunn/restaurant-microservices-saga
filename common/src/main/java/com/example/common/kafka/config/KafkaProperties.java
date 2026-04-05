@@ -12,7 +12,10 @@ public class KafkaProperties {
 
     @Data
     public static class Topics {
-        private Topic orderCreated = new Topic();
+        private Topic orderCreated       = new Topic();
+        private Topic paymentCompleted   = new Topic();
+        private Topic paymentFailed      = new Topic();
+        private Topic restaurantApproved = new Topic();
     }
 
     @Data
